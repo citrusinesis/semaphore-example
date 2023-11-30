@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/citrusinesis/semaphore-example/pkg/semaphore"
+	"time"
 )
 
 var (
@@ -43,12 +44,12 @@ func makeWater() {
 	hydrogen -= 2
 	mutex.Signal()
 
+	time.Sleep(time.Second * 2)
 	fmt.Println("CREATED!")
 	fmt.Printf("H: %d\n", hydrogen)
 }
 
 func main() {
-
 	go hReady()
 	go hReady()
 	go oReady()
